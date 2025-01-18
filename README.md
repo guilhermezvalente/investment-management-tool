@@ -17,3 +17,5 @@
   This first functionality involves creating a report to (1) describe sales operations, calculating profits, (2) calculate average price and upside of each asset, and (3) summarize all operations, specially notating each asset's average price at each operation.
 
   Although it would have made more sense to start with the input bit, I decided to start by this one since this was exactly what triggered my interest in this project, because I needed to generate those 3 reports at the end of the year to attach to my income tax report.
+
+  For this one I used Jupyter Notebook in VS Code, to learn and develop the code in Python step-by-step. In this first endeavor, I could learn about row iteration, for loops, pandas dataframe manipulation, if statements, and the yfinance library for financial data gathering.
