@@ -12,7 +12,7 @@
 
   Since my biggest goal is to leverage this project for self development, I will start developing individual functionalities independently, and later work towards creating the architecture and, potentially, adjust each code as necessary. This will help me maintain interest as I begin this journey, and see my own development through this process.
 
-### First Functionality: Investment Operations and Upside Report
+### First Functionality: F1IOUR - Investment Operations and Upside Report
 
   This first functionality involves creating a report to (1) describe sales operations, calculating profits, (2) calculate average price and upside of each asset, and (3) summarize all operations, specially notating each asset's average price at each operation.
 
