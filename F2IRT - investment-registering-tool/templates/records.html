@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+</head>
+<body>
+    <h1>Registered Operations</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Ticker</th>
+            <th>Date</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Fees</th>
+            <th>Taxes</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for op in operations %}
+        <tr>
+            <td>{{ op[0] }}</td>
+            <td>{{ op[1] }}</td>
+            <td>{{ op[2] }}</td>
+            <td>{{ op[3] }}</td>
+            <td>{{ op[4] }}</td>
+            <td>{{ op[5] }}</td>
+            <td>{{ op[6] }}</td>
+            <td>{{ op[7] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
