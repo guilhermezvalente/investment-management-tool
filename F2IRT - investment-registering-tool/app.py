@@ -20,7 +20,13 @@ def register():
     irrf = float(request.form["irrf"])
 
     register_operation(asset_type, operation_type, ticker, date, unit_price, quantity, fees, taxes, irrf)
-    return redirect("/records")
+    #return redirect("/records")
+    return '''
+    <script>
+        alert("The operation has been successfully submitted");
+        window.location.href = "/";
+    </script>
+    '''
 
 @app.route("/records")
 def records():
