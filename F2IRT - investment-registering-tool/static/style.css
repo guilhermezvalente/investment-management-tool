@@ -1,0 +1,65 @@
+/* General styles for the entire site */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #146316;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+input {
+    margin-bottom: 7px;
+}
+
+select {
+    margin-bottom: 7px;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Styles specific to index.html */
+.index-container {
+    padding: 20px;
+}
+
+.index-container h1 {
+    text-align: center;
+}
+
+/* Styles specific to records.html */
+.records-container {
+    padding: 20px;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.records-table th, .records-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.records-table th {
+    background-color: #4CAF50;
+    color: white;
+}
