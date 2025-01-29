@@ -11,15 +11,15 @@
     </header>
     <hr>
     <form action="/register" method="post">
-        <label for="assetType">Asset Type:</label>
-        <select  id="assetType" name="assetType" required>
+        <label for="asset_type">Asset Type:</label>
+        <select  id="asset_type" name="asset_type" required>
             <option value="" disabled selected>Select an asset type</option>
             <option value="stock">Stock</option>
             <option value="realEstate">Real Estate</option>
         </select><br>
 
-        <label for="operationType">Operation Type:</label>
-        <select  id="operationType" name="operationType" required>
+        <label for="operation_type">Operation Type:</label>
+        <select  id="operation_type" name="operation_type" required>
             <option value="" disabled selected>Select an operation type</option>
             <option value="purchase">Purchase</option>
             <option value="sale">Sale</option>
@@ -31,7 +31,7 @@
         <input type="text" id="ticker" name="ticker" required><br>
         
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br>
+        <input type="date" id="date" name="date" min="2006-01-01" required><br>
         
         <label for="unit_price">Unit Price:</label>
         <input type="number" step="0.01" id="unit_price" name="unit_price" required><br>
@@ -45,8 +45,8 @@
         <label for="taxes">Taxes:</label>
         <input type="number" step="0.01" id="taxes" name="taxes" required><br>
     
-        <label for="IRRF">IRRF:</label>
-        <input type="number" step="0.01" id="IRRF" name="IRRF" required><br>
+        <label for="irrf">IRRF:</label>
+        <input type="number" step="0.01" id="irrf" name="irrf" required><br>
         
         <button type="submit">Register</button>
     </form>

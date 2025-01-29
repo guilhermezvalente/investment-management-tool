@@ -6,16 +6,19 @@
     <title>Records</title>
 </head>
 <body>
-    <h1>Registered Operations</h1>
+    <h1>Operations Record</h1>
     <table border="1">
         <tr>
             <th>ID</th>
+            <th>Asset Type</th>
+            <th>Operation Type</th>
             <th>Ticker</th>
             <th>Date</th>
             <th>Unit Price</th>
             <th>Quantity</th>
             <th>Fees</th>
             <th>Taxes</th>
+            <th>IRRF</th>
             <th>Timestamp</th>
         </tr>
         {% for op in operations %}
@@ -28,6 +31,9 @@
             <td>{{ op[5] }}</td>
             <td>{{ op[6] }}</td>
             <td>{{ op[7] }}</td>
+            <td>{{ op[8] }}</td>
+            <td>{{ op[9] }}</td>
+            <td>{{ op[10] }}</td>
         </tr>
         {% endfor %}
     </table>

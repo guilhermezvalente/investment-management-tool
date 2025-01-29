@@ -9,14 +9,17 @@ def index():
 
 @app.route("/register", methods=["POST"])
 def register():
+    asset_type = request.form['asset_type']
+    operation_type = request.form['operation_type']
     ticker = request.form["ticker"]
     date = request.form["date"]
     unit_price = float(request.form["unit_price"])
     quantity = int(request.form["quantity"])
     fees = float(request.form["fees"])
     taxes = float(request.form["taxes"])
+    irrf = float(request.form["irrf"])
 
-    register_operation(ticker, date, unit_price, quantity, fees, taxes)
+    register_operation(asset_type, operation_type, ticker, date, unit_price, quantity, fees, taxes, irrf)
     return redirect("/records")
 
 @app.route("/records")
