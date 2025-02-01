@@ -3,10 +3,10 @@ from datetime import datetime
 import os
 
 def create_database():
-    if not os.path.exists("database"):
-        os.makedirs("database")
+    if not os.path.exists("/F2IRT - investment-registering-tool/database"):
+        os.makedirs("/F2IRT - investment-registering-tool/database")
 
-    connection = sqlite3.connect("database/operations.db")
+    connection = sqlite3.connect("/F2IRT - investment-registering-tool/database/operations.db")
     cursor = connection.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS operations (
@@ -32,7 +32,7 @@ def create_database():
 
 # Register a new operation
 def register_operation(asset_type, operation_type, ticker, date, unit_price, quantity, liquidationFee, emolumentsFee, taxes, operationalFee, otherFees, irrf):
-    connection = sqlite3.connect("database/operations.db")
+    connection = sqlite3.connect("/F2IRT - investment-registering-tool/database/operations.db")
     cursor = connection.cursor()
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     cursor.execute("""
@@ -44,7 +44,7 @@ def register_operation(asset_type, operation_type, ticker, date, unit_price, qua
 
 # Get all operations
 def get_operations():
-    connection = sqlite3.connect("database/operations.db")
+    connection = sqlite3.connect("/F2IRT - investment-registering-tool/database/operations.db")
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM operations")
     results = cursor.fetchall()
@@ -54,7 +54,7 @@ def get_operations():
 # Get paginated operations
 def get_paginated_operations(page, per_page):
     offset = (page - 1) * per_page
-    connection = sqlite3.connect("database/operations.db")
+    connection = sqlite3.connect("/F2IRT - investment-registering-tool/database/operations.db")
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM operations LIMIT ? OFFSET ?", (per_page, offset))
     results = cursor.fetchall()
