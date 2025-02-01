@@ -47,3 +47,4 @@ def get_operations():
     results = cursor.fetchall()
     connection.close()
     return results
+
