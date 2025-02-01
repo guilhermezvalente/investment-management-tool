@@ -10,6 +10,16 @@
     <header>
     <h1>Operations Record</h1></header>
     <hr><br>
+
+    <form method="get" action="/records">
+        <label for="per_page">Records per page:</label>
+        <select id="per_page" name="per_page" onchange="this.form.submit()">
+            <option value="10" {% if per_page == 10 %}selected{% endif %}>10</option>
+            <option value="30" {% if per_page == 30 %}selected{% endif %}>30</option>
+            <option value="50" {% if per_page == 50 %}selected{% endif %}>50</option>
+        </select>
+    </form>
+
     <table border="1">
         <tr>
             <th>ID</th>
@@ -19,8 +29,11 @@
             <th>Date</th>
             <th>Unit Price</th>
             <th>Quantity</th>
-            <th>Fees</th>
+            <th>Liquidation Fee</th>
+            <th>Emoluments Fee</th>
             <th>Taxes</th>
+            <th>Operational Fee</th>
+            <th>Other Fees</th>
             <th>IRRF</th>
             <th>Timestamp</th>
         </tr>
@@ -37,9 +50,20 @@
             <td>{{ op[8] }}</td>
             <td>{{ op[9] }}</td>
             <td>{{ op[10] }}</td>
+            <td>{{ op[11] }}</td>
+            <td>{{ op[12] }}</td>
+            <td>{{ op[13] }}</td>
+            <td>{{ op[14] }}</td>
         </tr>
         {% endfor %}
     </table>
+
+    <div>
+        <button {% if page == 1 %}disabled{% endif %} onclick="window.location.href='/records?page={{ page-1 }}&per_page={{ per_page }}'">Previous</button>
+        <span>Page {{ page }} of {{ total_pages }}</span>
+        <button {% if page == total_pages %}disabled{% endif %} onclick="window.location.href='/records?page={{ page+1 }}&per_page={{ per_page }}'">Next</button>
+    </div>
+
     <br><hr>
     <button type="button" onclick="window.location.href='/'">Register a New Operation</button>
     <footer></footer>

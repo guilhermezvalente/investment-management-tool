@@ -17,9 +17,12 @@ def create_database():
             date TEXT NOT NULL,
             unit_price REAL NOT NULL,
             quantity INTEGER NOT NULL,
-            fees REAL NOT NULL,
-            taxes REAL NOT NULL,
-            irrf REAL NOT NULL,
+            liquidation_fee REAL NOT NULL,
+            emoluments_fee REAL NOT NULL,
+            taxes REAL NOT NULL DEFAULT 0,
+            operational_fee REAL NOT NULL DEFAULT 0,
+            other_fees REAL NOT NULL DEFAULT 0,
+            irrf REAL NOT NULL DEFAULT 0,
             timestamp TEXT NOT NULL
         )
     """)
@@ -28,14 +31,14 @@ def create_database():
 
 
 # Register a new operation
-def register_operation(asset_type, operation_type, ticker, date, unit_price, quantity, fees, taxes, irrf):
+def register_operation(asset_type, operation_type, ticker, date, unit_price, quantity, liquidationFee, emolumentsFee, taxes, operationalFee, otherFees, irrf):
     connection = sqlite3.connect("database/operations.db")
     cursor = connection.cursor()
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     cursor.execute("""
-        INSERT INTO operations (asset_type, operation_type, ticker, date, unit_price, quantity, fees, taxes, irrf, timestamp)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """, (asset_type, operation_type, ticker, date, unit_price, quantity, fees, taxes, irrf, timestamp))
+        INSERT INTO operations (asset_type, operation_type, ticker, date, unit_price, quantity, liquidation_fee, emoluments_fee, taxes, operational_fee, other_fees, irrf, timestamp)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (asset_type, operation_type, ticker, date, unit_price, quantity, liquidationFee, emolumentsFee, taxes, operationalFee, otherFees, irrf, timestamp))
     connection.commit()
     connection.close()
 
@@ -48,3 +51,14 @@ def get_operations():
     connection.close()
     return results
 
+# Get paginated operations
+def get_paginated_operations(page, per_page):
+    offset = (page - 1) * per_page
+    connection = sqlite3.connect("database/operations.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM operations LIMIT ? OFFSET ?", (per_page, offset))
+    results = cursor.fetchall()
+    cursor.execute("SELECT COUNT(*) FROM operations")
+    total_records = cursor.fetchone()[0]
+    connection.close()
+    return results, total_records
