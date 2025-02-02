@@ -1,0 +1,1 @@
+SELECT SUM(unit_price*quantity) AS total_price FROM operations;

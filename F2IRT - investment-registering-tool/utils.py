@@ -24,7 +24,7 @@ def create_database():
             operational_fee REAL NOT NULL DEFAULT 0,
             other_fees REAL NOT NULL DEFAULT 0,
             irrf REAL NOT NULL DEFAULT 0,
-            timestamp TEXT NOT NULL
+            timestamp DATETIME NOT NULL
         )
     """)
     connection.commit()
@@ -34,7 +34,7 @@ def register_operation(asset_type, operation_type, ticker, date, unit_price, qua
     dir_path = os.path.join(os.getcwd(), "database")
     connection = sqlite3.connect(os.path.join(dir_path, "operations.db"))
     cursor = connection.cursor()
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    timestamp = datetime.now()
     cursor.execute("""
         INSERT INTO operations (asset_type, operation_type, ticker, date, unit_price, quantity, liquidation_fee, emoluments_fee, taxes, operational_fee, other_fees, irrf, timestamp)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
