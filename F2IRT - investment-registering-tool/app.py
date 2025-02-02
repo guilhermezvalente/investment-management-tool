@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect
-from utils import create_database, register_operation, get_paginated_operations
+from utils import create_database, register_operation, get_paginated_operations, delete_record
 
 app = Flask(__name__)
 
@@ -37,6 +37,8 @@ def records():
     operations, total_records = get_paginated_operations(page, per_page)
     total_pages = (total_records // per_page) + (1 if total_records % per_page > 0 else 0)
     return render_template("records.html", operations=operations, page=page, per_page=per_page, total_pages=total_pages)
+
+
 
 if __name__ == "__main__":
     create_database()

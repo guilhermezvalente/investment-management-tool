@@ -67,5 +67,6 @@ def delete_record(id):
     dir_path = os.path.join(os.getcwd(), "database")
     connection = sqlite3.connect(os.path.join(dir_path, "operations.db"))
     cursor = connection.cursor()
-    cursor.execute("DELETE FROM operations WHERE id = ?", id)
+    cursor.execute("DELETE FROM operations WHERE id = ?", (id,))
+    connection.commit()
     connection.close()
