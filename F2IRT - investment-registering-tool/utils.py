@@ -62,3 +62,10 @@ def get_paginated_operations(page, per_page):
     total_records = cursor.fetchone()[0]
     connection.close()
     return results, total_records
+
+def delete_record(id):
+    dir_path = os.path.join(os.getcwd(), "database")
+    connection = sqlite3.connect(os.path.join(dir_path, "operations.db"))
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM operations WHERE id = ?", id)
+    connection.close()
