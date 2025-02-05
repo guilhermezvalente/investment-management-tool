@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from utils import create_database, register_operation, get_paginated_operations, delete_record
 
 app = Flask(__name__)
@@ -38,7 +38,11 @@ def records():
     total_pages = (total_records // per_page) + (1 if total_records % per_page > 0 else 0)
     return render_template("records.html", operations=operations, page=page, per_page=per_page, total_pages=total_pages)
 
-
+@app.route("/delete/<int:id>", methods=["POST"])
+def delete(id):
+    page = request.form.get("page", 1)
+    delete_record(id)
+    return redirect(url_for("records", page=page))
 
 if __name__ == "__main__":
     create_database()

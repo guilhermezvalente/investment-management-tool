@@ -36,6 +36,7 @@
             <th>Other Fees</th>
             <th>IRRF</th>
             <th>Timestamp</th>
+            <th>Action</th>
         </tr>
         {% for op in operations %}
         <tr>
@@ -53,10 +54,16 @@
             <td>{{ op[11] }}</td>
             <td>{{ op[12] }}</td>
             <td>{{ op[13] }}</td>
-            <td>{{ op[14] }}</td>
+            <td class="action-column">
+                <form action="/delete/{{ op[0] }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                    <input type="hidden" name="page" value="{{ page }}">
+                    <button type="submit" class="delete">delete</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </table>
+    
 
     <div>
         <button {% if page == 1 %}disabled{% endif %} onclick="window.location.href='/records?page={{ page-1 }}&per_page={{ per_page }}'">Previous</button>

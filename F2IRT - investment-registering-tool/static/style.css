@@ -59,3 +59,27 @@ tr, th, td {
     border-color: rgb(177, 173, 173);
 }
 
+button.delete{
+    border: none;
+    background-color: transparent;
+    color: red;
+}
+
+button.delete:hover{
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
+
+.action-column{
+    width:80px;
+    justify-content: center;
+    align-items: center;    
+}
+
+.action-column form{
+    justify-content: center;
+    align-items: center;    
+}
