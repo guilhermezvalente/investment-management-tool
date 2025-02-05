@@ -70,3 +70,27 @@ def delete_record(id):
     cursor.execute("DELETE FROM operations WHERE id = ?", (id,))
     connection.commit()
     connection.close()
+
+def edit_record(id):
+    asset_type = request.form.get()
+    operation_type = 
+    ticker = 
+    date = 
+    unit_price = 
+    quantity =
+    liquidationFee = 
+    emolumentsFee = 
+    taxes = 
+    operationalFee = 
+    otherFees = 
+    irrf = 
+    dir_path = os.path.join(os.getcwd(), "database")
+    connection = sqlite3.connect(os.path.join(dir_path, "operations.db"))
+    cursor = connection.cursor()
+    cursor.execute("""
+        UPDATE operations
+        SET asset_type = ?, operation_type = ?, ticker = ?, date = ?, unit_price = ?, quantity = ?, liquidation_fee = ?, emoluments_fee = ?, taxes = ?, operational_fee = ?, other_fees = ?, irrf = ?, timestamp = ?
+        WHERE id = ?
+    """, (asset_type, operation_type, ticker, date, unit_price, quantity, liquidationFee, emolumentsFee, taxes, operationalFee, otherFees, irrf, datetime.now(), id))
+    connection.commit()
+    connection.close()

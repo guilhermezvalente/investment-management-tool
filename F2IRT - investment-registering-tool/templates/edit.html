@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Operation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Register Operation</h1>
+    </header>
+    <hr>
+    <form action="/edit/commit/{{id}}" method="post">
+        <label for="asset_type">Asset Type:</label>
+        <select  id="asset_type" name="asset_type" value={{asset_type}} required>
+            <option value="" disabled selected>Select an asset type</option>
+            <option>Stock</option>
+            <option>Real Estate</option>
+        </select><br>
+
+        <label for="operation_type">Operation Type:</label>
+        <select  id="operation_type" name="operation_type" value={{operation_type}} required>
+            <option value="" disabled selected>Select an operation type</option>
+            <option>Purchase</option>
+            <option>Sale</option>
+            <option>Subscription</option>
+            <option>Prize</option>
+        </select><br>
+
+        <label for="ticker">Ticker:</label>
+        <input type="text" id="ticker" name="ticker" value={{ticker}} required><br>
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" min="2006-01-01" value={{date}} required><br>
+        
+        <label for="unit_price">Unit Price:</label>
+        <input type="number" step="0.01" id="unit_price" name="unit_price" value={{unit_price}} required><br>
+        
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="1" value={{quantity}} required><br>
+        
+        <label for="liquidationFee">Liquidation Fee:</label>
+        <input type="number" step="0.01" id="liquidationFee" name="liquidationFee" value={{liquidation_fee}} required><br>
+        
+        <label for="emolumentsFee">Emoluments Fee:</label>
+        <input type="number" step="0.01" id="emolumentsFee" name="emolumentsFee" value={{emoluments_fee}} required><br>
+        
+        <label for="taxes">Taxes:</label>
+        <input type="number" step="0.01" id="taxes" name="taxes" value={{taxes}}><br>
+    
+        <label for="operationalFee">Operational Fee:</label>
+        <input type="number" step="0.01" id="operationalFee" name="operationalFee" value={{operational_fee}}><br>
+
+        <label for="otherFees">Other Fees:</label>
+        <input type="number" step="0.01" id="otherFees" name="otherFees" value={{other_fees}}><br>
+
+        <label for="irrf">IRRF:</label>
+        <input type="number" step="0.01" id="irrf" name="irrf" value={{irrf}}><br>
+        
+        <footer><hr>
+
+        <button type="submit">Submit</button>
+        <span><button type="button" onclick="window.location.href='/records'">Consult Records</button></span>
+        </footer>
+    </form>
+</body>
+</html>

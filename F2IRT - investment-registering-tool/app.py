@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from utils import create_database, register_operation, get_paginated_operations, delete_record
+from utils import create_database, register_operation, get_paginated_operations, delete_record, edit_record
 
 app = Flask(__name__)
 
@@ -42,6 +42,16 @@ def records():
 def delete(id):
     page = request.form.get("page", 1)
     delete_record(id)
+    return redirect(url_for("records", page=page))
+
+@app.route("/edit/<int:id>", methods=['POST'])
+def edit():
+    return render_template("edit.html")
+
+@app.route("/edit/commit/<int:id>", methods=['POST'])
+def commit_edit(id):
+    page = request.form.get("page", 1)
+    edit_record(id)
     return redirect(url_for("records", page=page))
 
 if __name__ == "__main__":
