@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Operation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Edit Operation</h1>
+    <form action="/edit/commit/{{ operation[0] }}" method="POST" onsubmit="showSuccessPopup(event)">
+        <input type="hidden" name="page" value="{{ page }}">
+
+        <label for="asset_type">Asset Type:</label>
+        <input type="text" id="asset_type" name="asset_type" value="{{ operation[1] }}"><br>
+
+        <label for="operation_type">Operation Type:</label>
+        <input type="text" id="operation_type" name="operation_type" value="{{ operation[2] }}"><br>
+
+        <label for="ticker">Ticker:</label>
+        <input type="text" id="ticker" name="ticker" value="{{ operation[3] }}"><br>
+
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" value="{{ operation[4] }}"><br>
+
+        <label for="unit_price">Unit Price:</label>
+        <input type="text" id="unit_price" name="unit_price" value="{{ operation[5] }}"><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity" value="{{ operation[6] }}"><br>
+
+        <label for="liquidationFee">Liquidation Fee:</label>
+        <input type="text" id="liquidationFee" name="liquidationFee" value="{{ operation[7] }}"><br>
+
+        <label for="emolumentsFee">Emoluments Fee:</label>
+        <input type="text" id="emolumentsFee" name="emolumentsFee" value="{{ operation[8] }}"><br>
+
+        <label for="taxes">Taxes:</label>
+        <input type="text" id="taxes" name="taxes" value="{{ operation[9] }}"><br>
+
+        <label for="operationalFee">Operational Fee:</label>
+        <input type="text" id="operationalFee" name="operationalFee" value="{{ operation[10] }}"><br>
+
+        <label for="otherFees">Other Fees:</label>
+        <input type="text" id="otherFees" name="otherFees" value="{{ operation[11] }}"><br>
+
+        <label for="irrf">IRRF:</label>
+        <input type="text" id="irrf" name="irrf" value="{{ operation[12] }}"><br>
+
+        <button type="submit">Submit</button>
+        <span><button type="button" onclick="window.location.href='/records?page={{ page }}'">Return to Records</button></span>        
+    </form>
+
+    <script>
+        function showSuccessPopup(event) {
+            event.preventDefault(); // Impede a submissão imediata do formulário
+            alert("The operation has been successfully updated");
+            const form = event.target;
+            form.submit(); // Submete o formulário após mostrar o pop-up
+        }
+    </script>
+</body>
+</html>

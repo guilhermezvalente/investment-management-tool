@@ -1,5 +1,5 @@
 /* General styles for the entire site */
-html{
+html {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -35,13 +35,11 @@ button {
 }
 
 /* Styles specific to index.html */
-
 form {
     align-items: center;
 }
 
 /* Styles specific to records.html */
-
 td {
     white-space: nowrap;
 }
@@ -59,27 +57,56 @@ tr, th, td {
     border-color: rgb(177, 173, 173);
 }
 
-button.delete{
+button.delete {
     border: none;
     background-color: transparent;
-    color: red;
+    color: rgba(255, 0, 0, 0.7);
+    width: 80px; /* Largura suficiente para o texto "delete" */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 button.delete:hover{
+    color: rgba(255, 0, 0);
+}
+
+button.edit-btn {
+    border: none;
+    background-color: transparent;
+    color: rgba(0, 102, 255, 0.8);
+    width: 50px; /* Largura suficiente para o texto "edit" */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+button.edit-btn:hover {
+    color: rgba(0, 102, 255);
+}
+
+button.edit-btn:hover,
+button.delete:hover {
     border: none;
     background-color: transparent;
     font-weight: bold;
     text-align: center;
-    color: red;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.action-column{
-    width:80px;
-    justify-content: center;
-    align-items: center;    
+.action-column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px; /* Largura adequada para caber ambos os botões */
 }
 
-.action-column form{
+.action-column form {
+    display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
+}
+
+button.delete, button.edit-btn {
+    flex: none;
+    text-align: center;
 }
