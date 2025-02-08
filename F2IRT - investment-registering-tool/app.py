@@ -50,8 +50,6 @@ def edit(id):
     page = request.args.get("page", 1)
     return render_template("edit.html", operation=operation, page=page)
 
-
-
 @app.route("/edit/commit/<int:id>", methods=['POST'])
 def commit_edit(id):
     asset_type = request.form['asset_type']

@@ -1,1 +1,3 @@
-SELECT SUM(unit_price*quantity) AS total_price FROM operations;
+SELECT * FROM operations
+ORDER BY id DESC
+LIMIT 10;
